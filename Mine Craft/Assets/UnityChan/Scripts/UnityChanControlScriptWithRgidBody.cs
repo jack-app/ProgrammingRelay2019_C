@@ -2,7 +2,6 @@
 // Mecanimのアニメーションデータが、原点で移動しない場合の Rigidbody付きコントローラ
 // サンプル
 // 2014/03/13 N.Kobyasahi
-// 2015/03/11 Revised for Unity5 (only)
 //
 using UnityEngine;
 using System.Collections;
@@ -94,7 +93,7 @@ namespace UnityChan
 			if (Input.GetButtonDown ("Jump")) {	// スペースキーを入力したら
 
 				//アニメーションのステートがLocomotionの最中のみジャンプできる
-				if (currentBaseState.fullPathHash == locoState) {
+				if (currentBaseState.nameHash == locoState) {
 					//ステート遷移中でなかったらジャンプできる
 					if (!anim.IsInTransition (0)) {
 						rb.AddForce (Vector3.up * jumpPower, ForceMode.VelocityChange);
@@ -114,7 +113,7 @@ namespace UnityChan
 			// 以下、Animatorの各ステート中での処理
 			// Locomotion中
 			// 現在のベースレイヤーがlocoStateの時
-			if (currentBaseState.fullPathHash == locoState) {
+			if (currentBaseState.nameHash == locoState) {
 				//カーブでコライダ調整をしている時は、念のためにリセットする
 				if (useCurves) {
 					resetCollider ();
@@ -122,7 +121,7 @@ namespace UnityChan
 			}
 		// JUMP中の処理
 		// 現在のベースレイヤーがjumpStateの時
-		else if (currentBaseState.fullPathHash == jumpState) {
+		else if (currentBaseState.nameHash == jumpState) {
 				cameraObject.SendMessage ("setCameraPositionJumpView");	// ジャンプ中のカメラに変更
 				// ステートがトランジション中でない場合
 				if (!anim.IsInTransition (0)) {
@@ -138,19 +137,7 @@ namespace UnityChan
 							rb.useGravity = false;	//ジャンプ中の重力の影響を切る
 										
 						// レイキャストをキャラクターのセンターから落とす
-						Ray ray = new Ray (transform.position + Vector3.up, -Vector3.up);
-						RaycastHit hitInfo = new RaycastHit ();
-						// 高さが useCurvesHeight 以上ある時のみ、コライダーの高さと中心をJUMP00アニメーションについているカーブで調整する
-						if (Physics.Raycast (ray, out hitInfo)) {
-							if (hitInfo.distance > useCurvesHeight) {
-								col.height = orgColHight - jumpHeight;			// 調整されたコライダーの高さ
-								float adjCenterY = orgVectColCenter.y + jumpHeight;
-								col.center = new Vector3 (0, adjCenterY, 0);	// 調整されたコライダーのセンター
-							} else {
-								// 閾値よりも低い時には初期値に戻す（念のため）					
-								resetCollider ();
-							}
-						}
+						
 					}
 					// Jump bool値をリセットする（ループしないようにする）				
 					anim.SetBool ("Jump", false);
@@ -158,7 +145,7 @@ namespace UnityChan
 			}
 		// IDLE中の処理
 		// 現在のベースレイヤーがidleStateの時
-		else if (currentBaseState.fullPathHash == idleState) {
+		else if (currentBaseState.nameHash == idleState) {
 				//カーブでコライダ調整をしている時は、念のためにリセットする
 				if (useCurves) {
 					resetCollider ();
@@ -170,7 +157,7 @@ namespace UnityChan
 			}
 		// REST中の処理
 		// 現在のベースレイヤーがrestStateの時
-		else if (currentBaseState.fullPathHash == restState) {
+		else if (currentBaseState.nameHash == restState) {
 				//cameraObject.SendMessage("setCameraPositionFrontView");		// カメラを正面に切り替える
 				// ステートが遷移中でない場合、Rest bool値をリセットする（ループしないようにする）
 				if (!anim.IsInTransition (0)) {
