@@ -304,11 +304,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1, y: 1.3732339, z: -0.0077797077}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1703217377}
-  m_RootOrder: 2
+  m_Father: {fileID: 1941498193}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &534669906
 MonoBehaviour:
@@ -334,6 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6edbb35cacdccf4b998dac9acbd5b05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mad: {fileID: 2688161252212586790, guid: 9254c2ca9201fdf4eb177ece31b55c3d, type: 3}
 --- !u!1 &947516112
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +370,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 160, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &947516114
 MonoBehaviour:
@@ -393,12 +394,12 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 0
+    m_MinSize: 3
+    m_MaxSize: 50
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -495,11 +496,16 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7900458725549062456, guid: d19fae91701dac9479b8867d1636cd8a,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d19fae91701dac9479b8867d1636cd8a, type: 3}
---- !u!4 &1703217377 stripped
+--- !u!4 &1941498193 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 1267670777302258905, guid: d19fae91701dac9479b8867d1636cd8a,
+  m_CorrespondingSourceObject: {fileID: 1329537567314927773, guid: d19fae91701dac9479b8867d1636cd8a,
     type: 3}
   m_PrefabInstance: {fileID: 1609831812}
   m_PrefabAsset: {fileID: 0}
