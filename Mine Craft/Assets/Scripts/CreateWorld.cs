@@ -10,9 +10,9 @@ public class CreateWorld : MonoBehaviour
     void Start()
     {
        
-        for(int i = -5; i < 5; i++)
+        for(int i = -50; i < 50; i++)
         {
-            for(int j = -5; j < 5; j++)
+            for(int j = -50; j < 50; j++)
             {
                 Instantiate(prefab,new Vector3(i,0,j) , Quaternion.identity);
             }

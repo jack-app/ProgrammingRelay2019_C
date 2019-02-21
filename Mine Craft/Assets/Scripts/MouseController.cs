@@ -17,11 +17,11 @@ public class MouseController : MonoBehaviour
         {
             Vector3Int point = new Vector3Int();
             RaycastHit hit = rayposition();
-            var temp = hit.point;
+            var temp = hit.transform.position;
             //int型への変換
-            point.x = (int)temp.x;
-            point.y = (int)temp.y;
-            point.z = (int)temp.z;
+            point.x = Mathf.RoundToInt(temp.x);
+            point.y = Mathf.RoundToInt(temp.y);
+            point.z = Mathf.RoundToInt(temp.z);
 
             float deltax = hit.point.x - hit.transform.position.x;
             float deltay = hit.point.y - hit.transform.position.y;
@@ -75,10 +75,10 @@ public class MouseController : MonoBehaviour
     RaycastHit rayposition()
     {
         RaycastHit hit;
-
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+        
+        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
         {
-
+            
         }
         return hit;
     }

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Camera_m : MonoBehaviour
 {
-
+    public Transform body;
     // Update is called once per frame
     void LateUpdate()
     {
-        Input.GetAxis("Mouse X");
-        Input.GetAxis("Mouse Y");
+        body.transform.eulerAngles += new Vector3(0,10 * Input.GetAxis("Mouse X"));
+        transform.eulerAngles += new Vector3 (-10 *Input.GetAxis("Mouse Y"),0);
     }
 }
